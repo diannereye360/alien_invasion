@@ -29,16 +29,9 @@ class AlienInvasion:
         while True:
             #create the check events method (1)
             self._check_events()
-            
-            #Redraw the screen during each pass through the loop
-            ##self.screen.fill(self.bg_color) #use before setting class set-up
-            self.screen.fill(self.settings.bg_color)
 
-            #draws the ship to the screen (2)
-            self.ship.blitme()
-
-            #Make the most recently drawn screen visible.
-            pygame.display.flip()
+            #create the update screen method (1)
+            self._update_screen()
 
     #create the check events method (2)
     def _check_events(self):
@@ -46,6 +39,19 @@ class AlienInvasion:
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
+                    
+    #create the update screen method (2)
+    def _update_screen(self):
+        """Update images on the screen, and flip to the new screen"""
+        #Redraw the screen during each pass through the loop
+        ##self.screen.fill(self.bg_color) #use before setting class set-up
+        self.screen.fill(self.settings.bg_color)
+
+        #draws the ship to the screen (2)
+        self.ship.blitme()
+
+         #Make the most recently drawn screen visible.
+        pygame.display.flip()
 
 if __name__ == '__main__':
     #Make a game instance, and run the game.
