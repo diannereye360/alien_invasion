@@ -30,6 +30,9 @@ class AlienInvasion:
             #create the check events method (1)
             self._check_events()
 
+            #allowing continuous movement (3)
+            self.ship.update()
+
             #create the update screen method (1)
             self._update_screen()
 
@@ -41,8 +44,15 @@ class AlienInvasion:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
+                    #allow continuous movement (1)
+                    self.ship.moving_right = True
+            #allow continuous movement (2)
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+
                     #move the ship to the right one pixel exerytime arrow key is pressed
-                    self.ship.rect.x += 1
+                    ##self.ship.rect.x += 1
                 
 
     #create the update screen method (2)
