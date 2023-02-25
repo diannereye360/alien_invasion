@@ -104,8 +104,10 @@ class AlienInvasion:
     #firing bullets
     def _fire_bullet(self):
         """create a new bullet and add it to the bullet group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        #limit bullets - player presses spacebar -> len of bullets checked; allows bullets to fire in groups of 3
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     #create the update screen method (2)
     def _update_screen(self):
