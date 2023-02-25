@@ -126,9 +126,23 @@ class AlienInvasion:
     #create instance of alien
     def _create_fleet(self):
         """create the fleet of aliens"""
-        #make an alien
+        #create an alien and find the number of aliens ina a row
+        #space between each alien is equal to one alien width
+
         alien = Alien(self)
-        self.aliens.add(alien)
+        alien_width = alien.rect.width
+        #formula to determine how many aliens fit in a row
+        available_space_x = self.settings.screen_width - (2 * alien_width)
+        number_aliens_x = available_space_x// (2 * alien_width)
+
+        #create the first row of aliens
+        for alien_number in range(number_aliens_x):
+            #create an aliena and place it in the row
+            alien = Alien(self)
+            alien.x = alien_width + 2 * alien_width * alien_number
+            alien.rect.x = alien.x
+            self.aliens.add(alien)
+
 
     #create the update screen method (2)
     def _update_screen(self):
@@ -144,7 +158,7 @@ class AlienInvasion:
         #firing bullets
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-            
+
         #create alien instance
         self.aliens.draw(self.screen)
          #Make the most recently drawn screen visible.
