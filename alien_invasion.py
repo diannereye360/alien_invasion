@@ -27,6 +27,9 @@ class AlienInvasion:
 
         #draws the ship to the screen (1)
         self.ship = Ship(self)
+        
+        #storing bullets in a group
+        self.bullets = pygame.sprite.Group()
 
         #Set the background color
         self.bg_color = (230, 230, 230)
@@ -40,6 +43,9 @@ class AlienInvasion:
 
             #allowing continuous movement 
             self.ship.update()
+
+            #store bullets in a group
+            self.bullets.update()
 
             #create the update screen method 
             self._update_screen()
@@ -89,7 +95,7 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         #Redraw the screen during each pass through the loop
-        
+
         ##self.screen.fill(self.bg_color) #use before setting class set-up
         self.screen.fill(self.settings.bg_color)
 
