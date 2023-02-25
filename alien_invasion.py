@@ -4,7 +4,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 #firing bullet
-#from bullet import Bullet
+from bullet import Bullet
 
 class AlienInvasion:
     #class create pygame window and responding to user input - inc: init the game & create the game resc.
@@ -29,6 +29,9 @@ class AlienInvasion:
 
         #draws the ship to the screen (1)
         self.ship = Ship(self)
+
+        #storing bullets in a group
+        self.bullets = pygame.sprite.Group()
         
         #Set the background color
         self.bg_color = (230, 230, 230)
@@ -42,6 +45,8 @@ class AlienInvasion:
 
             #allowing continuous movement 
             self.ship.update()
+
+            self.bullets.update()
 
             #create the update screen method 
             self._update_screen()
@@ -76,6 +81,9 @@ class AlienInvasion:
         #pressing q to quit
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
+            
     
         
 
@@ -87,6 +95,11 @@ class AlienInvasion:
             #moving both left and right - more accurate
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+    
+    def _fire_bullet(self):
+        """create a new bullet and add it to the bullet group"""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
 
     #create the update screen method (2)
     def _update_screen(self):
