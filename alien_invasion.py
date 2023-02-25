@@ -30,39 +30,52 @@ class AlienInvasion:
     def run_game(self):
         """Start the main loop for the game."""
         while True:
-            #create the check events method (1)
+            #create the check events method 
             self._check_events()
 
-            #allowing continuous movement (3)
+            #allowing continuous movement 
             self.ship.update()
 
-            #create the update screen method (1)
+            #create the update screen method 
             self._update_screen()
 
-    #create the check events method (2)
+    #create the check events method 
     def _check_events(self):
-        #Watch for the keyboard and mouse events.
+        #watch for the keyboard and mouse events.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    #allow continuous movement (1)
-                    self.ship.moving_right = True
-                #moving both left and right - more accurate; if both keys are held down, ship stops moving (1)
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = True
-            #allow continuous movement  (2)
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = False
-                #moving both left and right - more accurate(2)
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = False
-
-                    #move the ship to the right one pixel exerytime arrow key is pressed
-                    ##self.ship.rect.x += 1
+                #refactoring _check_events()
+                self._check_keydown_events(event)
                 
+            #allow continuous movement 
+            elif event.type == pygame.KEYUP:
+                #refactoring _check_events()
+                self._check_keyup_events(event)
+                
+
+                   
+    #refactoring _check_events()            
+    def _check_keydown_events(self, event):
+        '''respond to keypresses'''
+        if event.key == pygame.K_RIGHT:
+            #allow continuous movement 
+            self.ship.moving_right = True
+            #moving both left and right - more accurate; if both keys are held down, ship stops moving 
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+
+    #refactoring _check_events()
+    def _check_keyup_events(self, event):
+        '''respond to keyreleases'''
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+            #moving both left and right - more accurate
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
+
 
     #create the update screen method (2)
     def _update_screen(self):
