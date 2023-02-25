@@ -38,7 +38,7 @@ class AlienInvasion:
         
 
     def run_game(self):
-        """Start the main loop for the game."""
+        """start the main loop for the game."""
         while True:
             #create the check events method 
             self._check_events()
@@ -46,7 +46,14 @@ class AlienInvasion:
             #allowing continuous movement 
             self.ship.update()
 
+            #storing bullets in a group
             self.bullets.update()
+
+            #delete old bullets - get rid of bullets that have diappeared
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            #print(len(self.bullets)) - used to verify bullets were deleted
 
             #create the update screen method 
             self._update_screen()
@@ -81,11 +88,9 @@ class AlienInvasion:
         #pressing q to quit
         elif event.key == pygame.K_q:
             sys.exit()
+        #firing bullets
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
-            
-    
-        
 
     #refactoring _check_events()
     def _check_keyup_events(self, event):
@@ -96,8 +101,9 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
     
+    #firing bullets
     def _fire_bullet(self):
-        """Create a new bullet and add it to the bullet group"""
+        """create a new bullet and add it to the bullet group"""
         new_bullet = Bullet(self)
         self.bullets.add(new_bullet)
 
@@ -112,6 +118,7 @@ class AlienInvasion:
         #draws the ship to the screen (2)
         self.ship.blitme()
 
+        #firing bullets
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
