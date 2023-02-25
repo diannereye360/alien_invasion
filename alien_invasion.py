@@ -15,9 +15,15 @@ class AlienInvasion:
         pygame.init()
 
         self.settings = Settings()
-        ##self.screen = pygame.display.set_mode((1200, 800)) #use before setting class set-up
+
+        #run game in fullscreen mode
+        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN) #tells pygame to figure window size to fill screen
+        self.settings.screen_width = self.screen.get_rect().width #width determine will update settings obj.
+        self.settings.screen_height = self.screen.get_rect().height #height detemine will update settings obj.
+
+        ##self.screen = pygame.display.set_mode((1200, 800)) #use before setting class set-up; creates screen size
         #helps to create an instance of setting
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        #self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
         #draws the ship to the screen (1)
