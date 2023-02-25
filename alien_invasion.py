@@ -66,6 +66,9 @@ class AlienInvasion:
             #moving both left and right - more accurate; if both keys are held down, ship stops moving 
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
+        #pressing q to quit
+        elif event.key == pygame.K_q:
+            sys.exit()
 
     #refactoring _check_events()
     def _check_keyup_events(self, event):
