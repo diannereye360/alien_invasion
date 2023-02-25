@@ -97,7 +97,7 @@ class AlienInvasion:
             self.ship.moving_left = False
     
     def _fire_bullet(self):
-        """create a new bullet and add it to the bullet group"""
+        """Create a new bullet and add it to the bullet group"""
         new_bullet = Bullet(self)
         self.bullets.add(new_bullet)
 
