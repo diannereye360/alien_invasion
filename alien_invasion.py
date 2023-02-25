@@ -5,6 +5,8 @@ from settings import Settings
 from ship import Ship
 #firing bullet
 from bullet import Bullet
+#create alien instance
+from alien import Alien
 
 class AlienInvasion:
     #class create pygame window and responding to user input - inc: init the game & create the game resc.
@@ -32,6 +34,10 @@ class AlienInvasion:
 
         #storing bullets in a group
         self.bullets = pygame.sprite.Group()
+
+        #create alien instance
+        self.aliens = pygame.sprite.Group()
+        self._create_fleet()
         
         #Set the background color
         self.bg_color = (230, 230, 230)
@@ -48,7 +54,7 @@ class AlienInvasion:
 
             #create the _update_bullet method
             self. _update_bullets()
-                        
+
             #create the update screen method 
             self._update_screen()
 
@@ -117,6 +123,12 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
         #print(len(self.bullets)) - used to verify bullets were deleted
 
+    #create instance of alien
+    def _create_fleet(self):
+        """create the fleet of aliens"""
+        #make an alien
+        alien = Alien(self)
+        self.aliens.add(alien)
 
     #create the update screen method (2)
     def _update_screen(self):
@@ -132,7 +144,9 @@ class AlienInvasion:
         #firing bullets
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-
+            
+        #create alien instance
+        self.aliens.draw(self.screen)
          #Make the most recently drawn screen visible.
         pygame.display.flip()
 
