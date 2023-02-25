@@ -5,9 +5,8 @@ from settings import Settings
 from ship import Ship
 
 class AlienInvasion:
-    #(1)creating pygame window and responding to user input - includes: initializing the game & creating the game resources
-
-    """Overall class to manage game assets and behavior."""
+    #class create pygame window and responding to user input - inc: init the game & create the game resc.
+    """Overall class to manage game assets and behavior. Settings, screen, and ship instance are created"""
 
     def __init__(self):
         """Initialize the game, and create game resources."""
@@ -47,7 +46,7 @@ class AlienInvasion:
 
     #create the check events method 
     def _check_events(self):
-        #watch for the keyboard and mouse events.
+        #watch for the keyboard and mouse events; manage movements.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -90,6 +89,7 @@ class AlienInvasion:
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
         #Redraw the screen during each pass through the loop
+        
         ##self.screen.fill(self.bg_color) #use before setting class set-up
         self.screen.fill(self.settings.bg_color)
 
