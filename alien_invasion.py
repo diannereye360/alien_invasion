@@ -5,6 +5,8 @@ from settings import Settings
 from ship import Ship
 
 class AlienInvasion:
+    #(1)creating pygame window and responding to user input - includes: initializing the game & creating the game resources
+
     """Overall class to manage game assets and behavior."""
 
     def __init__(self):
@@ -23,6 +25,7 @@ class AlienInvasion:
 
         #Set the background color
         self.bg_color = (230, 230, 230)
+        
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -46,10 +49,16 @@ class AlienInvasion:
                 if event.key == pygame.K_RIGHT:
                     #allow continuous movement (1)
                     self.ship.moving_right = True
-            #allow continuous movement (2)
+                #moving both left and right - more accurate; if both keys are held down, ship stops moving (1)
+                elif event.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
+            #allow continuous movement  (2)
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
+                #moving both left and right - more accurate(2)
+                elif event.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
 
                     #move the ship to the right one pixel exerytime arrow key is pressed
                     ##self.ship.rect.x += 1
