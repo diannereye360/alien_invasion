@@ -4,7 +4,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 #firing bullet
-from bullet import Bullet
+#from bullet import Bullet
 
 class AlienInvasion:
     #class create pygame window and responding to user input - inc: init the game & create the game resc.
@@ -30,9 +30,6 @@ class AlienInvasion:
         #draws the ship to the screen (1)
         self.ship = Ship(self)
         
-        #storing bullets in a group
-        self.bullets = pygame.sprite.Group()
-
         #Set the background color
         self.bg_color = (230, 230, 230)
         
@@ -45,9 +42,6 @@ class AlienInvasion:
 
             #allowing continuous movement 
             self.ship.update()
-
-            #store bullets in a group
-            self.bullets.update()
 
             #create the update screen method 
             self._update_screen()
@@ -82,9 +76,7 @@ class AlienInvasion:
         #pressing q to quit
         elif event.key == pygame.K_q:
             sys.exit()
-        #firing bullets
-        elif event.key == pygame.K_SPACE:
-            self._fire_bullet()
+    
         
 
     #refactoring _check_events()
@@ -96,12 +88,6 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
-    #firing bullet
-    def _fire_bullet(self):
-        """create a new bullet and add it to the bullets group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
-
     #create the update screen method (2)
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen"""
@@ -112,10 +98,6 @@ class AlienInvasion:
 
         #draws the ship to the screen (2)
         self.ship.blitme()
-
-        #firing bullets
-        for bullet in self.bullets.sprites():
-            bullet.draw_bullet()
 
          #Make the most recently drawn screen visible.
         pygame.display.flip()
