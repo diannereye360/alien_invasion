@@ -46,15 +46,9 @@ class AlienInvasion:
             #allowing continuous movement 
             self.ship.update()
 
-            #storing bullets in a group
-            self.bullets.update()
-
-            #delete old bullets - get rid of bullets that have diappeared
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            #print(len(self.bullets)) - used to verify bullets were deleted
-
+            #create the _update_bullet method
+            self. _update_bullets()
+                        
             #create the update screen method 
             self._update_screen()
 
@@ -108,6 +102,21 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+    
+    #create update bullet method
+    def _update_bullets(self):
+        """update position of bullets and get rid of old bullets"""
+        #update bullet positions
+        
+        #storing bullets in a group
+        self.bullets.update()
+
+        #delete old bullets - get rid of bullets that have diappeared
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        #print(len(self.bullets)) - used to verify bullets were deleted
+
 
     #create the update screen method (2)
     def _update_screen(self):
