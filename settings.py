@@ -23,7 +23,7 @@ class Settings:
 
         #moving aliens right - control the speed of ea alien
         #Alien sttings
-        self.alien_speed = 1.0
+        #self.alien_speed = 1.0
 
         #create setting for fleet directions
         self.fleet_drop_speed = 10 #controls how quickly the fleet drops down the screenea time alien reaches either edge
