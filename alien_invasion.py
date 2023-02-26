@@ -192,6 +192,7 @@ class AlienInvasion:
         #if so, get rid of the bullet and the aliem
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
+        #updating the score as aliens are shot down
         if collisions:
             self.stats.score += self.settings.alien_points
             self.sb.prep_score()

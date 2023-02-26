@@ -44,8 +44,9 @@ class Settings:
         #fleet_direction of 1 represents right; -1 represents left
         self.fleet_direction = 1
 
+        #updating the score as aliens are shot down
         self.alien_points = 50
-        
+
     def increase_speed(self):
         """increase speed settings"""
 
