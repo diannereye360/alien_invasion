@@ -72,7 +72,7 @@ class AlienInvasion:
                 self._update_aliens()
 
                 #create the update screen method 
-                self._update_screen()
+            self._update_screen()
 
     #create the check events method 
     def _check_events(self):
@@ -267,6 +267,7 @@ class AlienInvasion:
 
         #create alien instance
         self.aliens.draw(self.screen)
+
          #Make the most recently drawn screen visible.
         pygame.display.flip()
 

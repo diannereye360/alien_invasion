@@ -6,9 +6,6 @@ class GameStats:
         """initialize statistics"""
         self.settings = ai_game.settings
         self.reset_stats()
-        
-        #adding the play button - start game in an inactive state
-        self.game_active = False
 
         #game over - start alien invasion in an active state
         self.game_active = True
