@@ -9,6 +9,9 @@ from settings import Settings
 #responding to alien and ship collisions
 from game_stats import GameStats
 
+#making a scoreboard
+from scoreboard import Scoreboard
+
 #drawing the button to the screen
 from button import Button
 
@@ -39,8 +42,13 @@ class AlienInvasion:
         #self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        #create an instance to store game statistics and create a scoreboard
+
         #responding to alien and ship collisions - create an instance to store game statistics
         self.stats = GameStats(self)
+
+        #make a scoreboard
+        self.sb = Scoreboard(self)
 
         #draws the ship to the screen (1)
         self.ship = Ship(self)
@@ -303,6 +311,9 @@ class AlienInvasion:
         #create alien instance
         self.aliens.draw(self.screen)
 
+        self.sb.show_score()
+
+        #draw the play button is the game is inactive
         if not self.stats.game_active:
             self.play_button.draw_button()
 
