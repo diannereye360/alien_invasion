@@ -11,6 +11,8 @@ class Settings:
 
         #adj. ship speed - ship speed will now move 1.5 pixels rather than 1 pixel on each pass through the loop 
         self.ship_speed = 1.5
+        #responding to alien and ship collisions
+        self.ship_limit = 3
 
         #add bullet setting
         self.bullet_speed = 1.5
