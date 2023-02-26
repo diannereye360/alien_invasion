@@ -55,6 +55,9 @@ class AlienInvasion:
             #create the _update_bullet method
             self. _update_bullets()
 
+            #moving alien right
+            self._update_aliens()
+
             #create the update screen method 
             self._update_screen()
 
@@ -122,6 +125,10 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         #print(len(self.bullets)) - used to verify bullets were deleted
+    
+    def _update_aliens(self):
+        """update the positions of all aliens in the fleet"""
+        self.aliens.update()
 
     #create instance of alien
     def _create_fleet(self):

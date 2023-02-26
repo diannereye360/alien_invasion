@@ -18,4 +18,8 @@ class Settings:
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 3 #limit num bullets - limits plater to 3 bullets
+
+        #moving aliens right - control the speed of ea alien
+        #Alien sttings
+        self.alien_speed = 1.0
         
