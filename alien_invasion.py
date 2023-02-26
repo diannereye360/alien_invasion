@@ -59,17 +59,20 @@ class AlienInvasion:
             #create the check events method 
             self._check_events()
 
-            #allowing continuous movement 
-            self.ship.update()
+            #identifying when parts of the game should run
+            if self.stats.game_active:
 
-            #create the _update_bullet method
-            self. _update_bullets()
+                #allowing continuous movement 
+                self.ship.update()
 
-            #moving alien right
-            self._update_aliens()
+                #create the _update_bullet method
+                self. _update_bullets()
 
-            #create the update screen method 
-            self._update_screen()
+                #moving alien right
+                self._update_aliens()
+
+                #create the update screen method 
+                self._update_screen()
 
     #create the check events method 
     def _check_events(self):
