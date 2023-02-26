@@ -199,6 +199,8 @@ class AlienInvasion:
                 self.stats.score += self.settings.alien_points * len(aliens)
             #self.stats.score += self.settings.alien_points
             self.sb.prep_score()
+            #high scores
+            self.sb.check_high_score()
 
         #repopulating fleet - check whether alien group is empty (has to be completely empty)
         if not self.aliens:
