@@ -194,7 +194,10 @@ class AlienInvasion:
 
         #updating the score as aliens are shot down
         if collisions:
-            self.stats.score += self.settings.alien_points
+            #making sure to score all hits
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            #self.stats.score += self.settings.alien_points
             self.sb.prep_score()
 
         #repopulating fleet - check whether alien group is empty (has to be completely empty)
