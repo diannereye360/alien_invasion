@@ -9,6 +9,9 @@ from settings import Settings
 #responding to alien and ship collisions
 from game_stats import GameStats
 
+#drawing the button to the screen
+from button import Button
+
 from ship import Ship
 #firing bullet
 from bullet import Bullet
@@ -49,6 +52,9 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
         
+        #draw the button to the screen
+        self.play_button = Button(self, "Play")
+
         #Set the background color
         self.bg_color = (230, 230, 230)
         
@@ -267,6 +273,9 @@ class AlienInvasion:
 
         #create alien instance
         self.aliens.draw(self.screen)
+
+        if not self.stats.game_active:
+            self.play_button.draw_button()
 
          #Make the most recently drawn screen visible.
         pygame.display.flip()
