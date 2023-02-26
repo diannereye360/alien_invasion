@@ -127,8 +127,11 @@ class AlienInvasion:
         #print(len(self.bullets)) - used to verify bullets were deleted
     
     def _update_aliens(self):
+        """check if the fleet is at an edge, then update the positions of all aliens in the fleet"""
+        self._check_fleet_edges()
         """update the positions of all aliens in the fleet"""
         self.aliens.update()
+        
 
     #create instance of alien
     def _create_fleet(self):
@@ -164,6 +167,20 @@ class AlienInvasion:
         alien.rect.x = alien.x
         alien.rect.y = alien_height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
+
+    #dropping the fleet and changing direction
+    def _check_fleet_edges(self):
+        """respond appropriately if any aliens have reached an edge"""
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+    
+    def _change_fleet_direction(self):
+        """drop the entire fleet and change the fleet's direction"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
 
     #create the update screen method (2)
