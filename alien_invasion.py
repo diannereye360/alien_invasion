@@ -249,7 +249,7 @@ class AlienInvasion:
 
     #refactoring _create_fleet
     def _create_alien(self, alien_number, row_number):
-        #create an alien and place it in the row
+        #create an alien and place it in the rown
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
