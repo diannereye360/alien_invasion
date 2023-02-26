@@ -33,7 +33,7 @@ class Settings:
         #how quikcly the game speeds up
         self.speedup_scale = 1.1
 
-        self.initialize_dyanmic_settings()
+        self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
         """initialize settings that change throughout the game"""

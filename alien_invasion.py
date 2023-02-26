@@ -107,6 +107,8 @@ class AlienInvasion:
         #deactivating the play button
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
+            #reset the game settings
+            self.settings.initialize_dynamic_settings()
         #if self.play_button.rect.collidepoint(mouse_pos):
             #reset the game statistics
             self.stats.reset_stats()
