@@ -127,6 +127,9 @@ class AlienInvasion:
             #displaying the level
             self.sb.prep_level()
 
+            #displaying number of ships
+            self.sb.prep_ships()
+
             #get rid of any remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
@@ -287,8 +290,11 @@ class AlienInvasion:
         """responding to the ship being hit by an alien"""
         #game over - ends game when player runs out of ships
         if self.stats.ships_left > 0:
-            #decrements ships_left
+            #decrements ships_left, and update scoreboard
             self.stats.ships_left -= 1
+
+            self.sb.prep_ships()
+            
             #get rid of any remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
