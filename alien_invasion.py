@@ -165,6 +165,9 @@ class AlienInvasion:
             #print("Ship hit!!!")
             self._ship_hit()
         
+        #look for aliens hitting the bottom fo the screen
+        self._check_aliens_bottom()
+        
 
     #create instance of alien
     def _create_fleet(self):
@@ -229,6 +232,16 @@ class AlienInvasion:
 
         #pause
         sleep(0.5)
+    
+    #aliens that reach the bottom of the screen
+    def _check_aliens_bottom(self):
+        """check if any aliens have reached the bottom of the screen"""
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                #treat this the same as if the ship got hit
+                self._ship_hit()
+                break
 
     #create the update screen method (2)
     def _update_screen(self):
